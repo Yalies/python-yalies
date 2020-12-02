@@ -46,8 +46,9 @@ class API:
         headers = {
             'Authorization': 'Bearer ' + self.token,
         }
-        request = requests.get(self._HOST + self._API_ROOT + endpoint,
-                               headers=headers)
+        request = requests.post(self._HOST + self._API_ROOT + endpoint,
+                                json=body,
+                                headers=headers)
         if request.ok:
             return request.json()
         else:
