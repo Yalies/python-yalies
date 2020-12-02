@@ -40,17 +40,17 @@ class API:
     def __init__(self, token: str):
         self.token = token
 
-    def post(self, endpoint: str, body: dict = {}, params: dict = {}):
+    def post(self, endpoint: str, body: dict = {}):
         """
         Make a POST request to the API.
 
         :param params: dictionary of custom params to add to request.
         """
-        params.update({
-            'token': self.token,
-        })
+        headers = {
+            'Authentication': 'Bearer ' + self.token,
+        }
         request = requests.get(self._HOST + self._API_ROOT + endpoint,
-                               params=params)
+                               headers=headers)
         if request.ok:
             return request.json()
         else:
