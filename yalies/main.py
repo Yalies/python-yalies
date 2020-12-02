@@ -44,7 +44,7 @@ class API:
         :param params: dictionary of custom params to add to request.
         """
         headers = {
-            'Authentication': 'Bearer ' + self.token,
+            'Authorization': 'Bearer ' + self.token,
         }
         request = requests.get(self._HOST + self._API_ROOT + endpoint,
                                headers=headers)
