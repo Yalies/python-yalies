@@ -29,9 +29,6 @@ class Student:
         self.eli_whitney = raw.get('eli_whitney')
         self.access_code = raw.get('access_code')
 
-    def __repr__(self):
-        return '<' + self.__class__.__name__ + ':' + self.netid + '>'
-
 
 class API:
     _HOST = 'https://yalies.io'
