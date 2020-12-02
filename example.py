@@ -30,7 +30,5 @@ print(f'There are {len(all_students)} undergraduate students at Yale.')
 
 # Get students by page with a custom page size
 third_five_students = api.students(page=3, page_size=5)
-print(third_five_students)
-
 for student in third_five_students:
     print(f'{student.last_name}, {student.first_name} - {student.college} {student.year}')
