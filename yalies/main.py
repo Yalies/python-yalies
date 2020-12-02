@@ -33,7 +33,7 @@ class Student:
         return '<' + self.__class__.__name__ + ':' + self.netid + '>'
 
 
-class Bot:
+class API:
     _HOST = 'https://yalies.io'
     _API_ROOT = '/api/'
 
