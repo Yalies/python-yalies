@@ -21,3 +21,8 @@ hopper_2024 = api.students(filters={
 
 for student in hopper_2024:
     print(f'{student.last_name}, {student.first_name} - {student.college} {student.year}')
+
+
+# Get all students at once
+all_students = api.students()
+print(f'There are {len(all_students)} undergraduate students at Yale.')
