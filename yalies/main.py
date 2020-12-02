@@ -1,0 +1,72 @@
+import requests
+
+
+class Student:
+    def __init__(self, raw):
+        self.raw = raw
+
+        self.netid = raw.get('netid')
+        self.upi = raw.get('upi')
+        self.first_name = raw.get('first_name')
+        self.last_name = raw.get('last_name')
+        self.image_id = raw.get('image_id')
+        self.image = raw.get('image')
+        self.year = raw.get('year')
+        self.college = raw.get('college')
+        self.pronoun = raw.get('pronoun')
+        self.email = raw.get('email')
+        self.residence = raw.get('residence')
+        self.building_code = raw.get('building_code')
+        self.entryway = raw.get('entryway')
+        self.floor = raw.get('floor')
+        self.suite = raw.get('suite')
+        self.room = raw.get('room')
+        self.birthday = raw.get('birthday')
+        self.major = raw.get('major')
+        self.address = raw.get('address')
+        self.phone = raw.get('phone')
+        self.leave = raw.get('leave')
+        self.eli_whitney = raw.get('eli_whitney')
+        self.access_code = raw.get('access_code')
+
+    def __repr__(self):
+        return '<' + self.__class__.__name__ + ':' + self.netid + '>'
+
+
+class Bot:
+    _HOST = 'https://yalies.io'
+    _API_ROOT = '/api/'
+
+    def __init__(self, token: str):
+        self.token = token
+
+    def post(self, endpoint: str, body: dict = {}, params: dict = {}):
+        """
+        Make a POST request to the API.
+
+        :param params: dictionary of custom params to add to request.
+        """
+        params.update({
+            'token': self.token,
+        })
+        request = requests.get(self._HOST + self._API_ROOT + endpoint,
+                               params=params)
+        if request.ok:
+            return request.json()
+        else:
+            raise Exception('API request failed. Received:\n' + request.text)
+
+    def students(self, query=None, filters=None, page=None):
+        """
+        Given search criteria, get a list of matching students.
+        """
+        body = {
+            'query': query,
+            'filters': filters,
+            'page': page,
+        }
+        body = {k: v for k, v in body.items() if v}
+        return [
+            Student(student) for student in
+            self.post('students', body=body)
+        ]
