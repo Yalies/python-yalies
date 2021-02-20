@@ -5,29 +5,8 @@ class Student:
     def __init__(self, raw):
         self.raw = raw
 
-        self.netid = raw.get('netid')
-        self.upi = raw.get('upi')
-        self.first_name = raw.get('first_name')
-        self.last_name = raw.get('last_name')
-        self.image_id = raw.get('image_id')
-        self.image = raw.get('image')
-        self.year = raw.get('year')
-        self.college = raw.get('college')
-        self.pronoun = raw.get('pronoun')
-        self.email = raw.get('email')
-        self.residence = raw.get('residence')
-        self.building_code = raw.get('building_code')
-        self.entryway = raw.get('entryway')
-        self.floor = raw.get('floor')
-        self.suite = raw.get('suite')
-        self.room = raw.get('room')
-        self.birthday = raw.get('birthday')
-        self.major = raw.get('major')
-        self.address = raw.get('address')
-        self.phone = raw.get('phone')
-        self.leave = raw.get('leave')
-        self.eli_whitney = raw.get('eli_whitney')
-        self.access_code = raw.get('access_code')
+        for key, value in raw.items():
+            setattr(self, key, value)
 
 
 class API:
