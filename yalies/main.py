@@ -46,5 +46,5 @@ class API:
         body = {k: v for k, v in body.items() if v}
         return [
             Student(student) for student in
-            self.post('students', body=body)
+            self.post('people', body=body)
         ]
