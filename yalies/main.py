@@ -1,7 +1,7 @@
 import requests
 
 
-class Student:
+class Person:
     def __init__(self, raw):
         self.raw = raw
 
@@ -33,9 +33,9 @@ class API:
         else:
             raise Exception('API request failed. Received:\n' + request.text)
 
-    def students(self, query=None, filters=None, page=None, page_size=None):
+    def people(self, query=None, filters=None, page=None, page_size=None):
         """
-        Given search criteria, get a list of matching students.
+        Given search criteria, get a list of matching people.
         """
         body = {
             'query': query,
@@ -45,6 +45,6 @@ class API:
         }
         body = {k: v for k, v in body.items() if v}
         return [
-            Student(student) for student in
+            Person(person) for person in
             self.post('people', body=body)
         ]
