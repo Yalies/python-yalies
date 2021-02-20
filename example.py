@@ -2,26 +2,26 @@ import yalies
 import os
 
 
-def log(students):
+def log(people):
     """
-    Utility function for logging lists of students in this script.
+    Utility function for logging lists of people in this script.
     """
-    for student in students:
-        print(f'{student.last_name}, {student.first_name} - {student.college} {student.year}')
+    for person in people:
+        print(f'{person.last_name}, {person.first_name} - {person.college} {person.year}')
 
 
 # Initialize API with token from YALIES_TOKEN environment variable or console
 api = yalies.API(os.environ.get('YALIES_TOKEN') or input('Insert Yalies API token: '))
 
 # Perform a test request to the API
-johns = api.students(query='john')
+johns = api.people(query='john')
 log(johns)
 
 
 import time
 
 # Perform a more sophisticated request with filters and page
-hopper_2024 = api.students(filters={
+hopper_2024 = api.people(filters={
                                'college': ['Grace Hopper'],
                                'year': [2024]
                            },
@@ -29,11 +29,11 @@ hopper_2024 = api.students(filters={
 log(hopper_2024)
 
 
-# Get all students at once
-all_students = api.students()
-print(f'There are {len(all_students)} undergraduate students at Yale.')
+# Get all people at once
+all_people = api.people(filters={'school_code': 'YC'})
+print(f'Found {len(all_people)} people affiliated with Yale.')
 
 
-# Get students by page with a custom page size
-third_five_students = api.students(page=3, page_size=5)
-log(third_five_students)
+# Get people by page with a custom page size
+third_five_people = api.people(page=3, page_size=5)
+log(third_five_people)
