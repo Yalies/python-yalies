@@ -33,8 +33,6 @@ class API:
     def post(self, endpoint: str, body: dict = {}):
         """
         Make a POST request to the API.
-
-        :param params: dictionary of custom params to add to request.
         """
         request = requests.post(self._HOST + self._API_ROOT + endpoint,
                                 json=body,
@@ -43,6 +41,13 @@ class API:
             return request.json()
         else:
             raise Exception('API request failed. Received:\n' + request.text)
+
+    def filters(self):
+        """
+        Get a list of valid filters and recognized values.
+        """
+        self.get('filters')
+
 
     def people(self, query=None, filters=None, page=None, page_size=None):
         """
