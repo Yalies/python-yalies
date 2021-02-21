@@ -19,7 +19,7 @@ class API:
             'Authorization': 'Bearer ' + self.token,
         }
 
-    def get(self, endpoint: str):
+    def _get(self, endpoint: str):
         """
         Make a GET request to the API.
         """
@@ -30,7 +30,7 @@ class API:
         else:
             raise Exception('API request failed. Received:\n' + request.text)
 
-    def post(self, endpoint: str, body: dict = {}):
+    def _post(self, endpoint: str, body: dict = {}):
         """
         Make a POST request to the API.
         """
@@ -46,8 +46,7 @@ class API:
         """
         Get a list of valid filters and recognized values.
         """
-        self.get('filters')
-
+        self._get('filters')
 
     def people(self, query=None, filters=None, page=None, page_size=None):
         """
@@ -62,5 +61,5 @@ class API:
         body = {k: v for k, v in body.items() if v}
         return [
             Person(person) for person in
-            self.post('people', body=body)
+            self._post('people', body=body)
         ]
