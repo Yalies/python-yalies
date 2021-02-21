@@ -19,6 +19,17 @@ class API:
             'Authorization': 'Bearer ' + self.token,
         }
 
+    def get(self, endpoint: str):
+        """
+        Make a GET request to the API.
+        """
+        request = requests.post(self._HOST + self._API_ROOT + endpoint,
+                                header=self.headers)
+        if request.ok:
+            return request.json()
+        else:
+            raise Exception('API request failed. Received:\n' + request.text)
+
     def post(self, endpoint: str, body: dict = {}):
         """
         Make a POST request to the API.
