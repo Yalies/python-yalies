@@ -28,7 +28,7 @@ api = yalies.API('your token')
 ## Retrieval Functions
 There is only one public-facing function in the `API` class:
 
-`API.students([query, filters, page])` allows your program to request a list of students matching certain parameters. You may pass the `query` parameter, a string, specifying a textual query to search by. Alternatively, or in addition, you may pass `filters` a dictionary specifying lists of acceptable properties of the students you wish to retrieve data on. See `example.py` for a complete usage example, and the [API documentation](https://yalies.io/apidocs) for more information about request format.
+`API.people([query, filters, page])` allows your program to request a list of people matching certain parameters. You may pass the `query` parameter, a string, specifying a textual query to search by. Alternatively, or in addition, you may pass `filters` a dictionary specifying lists of acceptable properties of the people you wish to retrieve data on. See `example.py` for a complete usage example, and the [API documentation](https://yalies.io/apidocs) for more information about request format.
 
 ## Author
 [Erik Boesen](https://github.com/ErikBoesen)
