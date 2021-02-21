@@ -15,6 +15,9 @@ class API:
 
     def __init__(self, token: str):
         self.token = token
+        self.headers = {
+            'Authorization': 'Bearer ' + self.token,
+        }
 
     def post(self, endpoint: str, body: dict = {}):
         """
@@ -22,12 +25,9 @@ class API:
 
         :param params: dictionary of custom params to add to request.
         """
-        headers = {
-            'Authorization': 'Bearer ' + self.token,
-        }
         request = requests.post(self._HOST + self._API_ROOT + endpoint,
                                 json=body,
-                                headers=headers)
+                                headers=self.headers)
         if request.ok:
             return request.json()
         else:
