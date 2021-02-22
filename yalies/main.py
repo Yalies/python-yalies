@@ -24,7 +24,7 @@ class API:
         Make a GET request to the API.
         """
         request = requests.post(self._HOST + self._API_ROOT + endpoint,
-                                header=self.headers)
+                                headers=self.headers)
         if request.ok:
             return request.json()
         else:
