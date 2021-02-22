@@ -46,7 +46,7 @@ class API:
         """
         Get a list of valid filters and recognized values.
         """
-        self._get('filters')
+        return self._get('filters')
 
     def people(self, query=None, filters=None, page=None, page_size=None):
         """
