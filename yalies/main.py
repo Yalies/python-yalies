@@ -23,7 +23,7 @@ class API:
         """
         Make a GET request to the API.
         """
-        request = requests.post(self._HOST + self._API_ROOT + endpoint,
+        request = requests.get(self._HOST + self._API_ROOT + endpoint,
                                 headers=self.headers)
         if request.ok:
             return request.json()
