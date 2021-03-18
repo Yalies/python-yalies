@@ -3,7 +3,7 @@
 from setuptools import setup
 
 setup(name='yalies',
-      version='1.1.0',
+      version='1.2.0',
       description='Library for easy interaction with the Yalies API (yalies.io/apidocs)',
       url='https://github.com/Yalies/yalies-python',
       author='Erik Boesen',
