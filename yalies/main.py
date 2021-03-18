@@ -63,3 +63,12 @@ class API:
             Person(person) for person in
             self._post('people', body=body)
         ]
+
+    def person(self, *args, **kwargs):
+        """
+        Given search criteria, return the first person found matching the desired parameters.
+        """
+        people = self.people(*args, **kwargs)
+        if people:
+            return people[0]
+        return None
