@@ -17,6 +17,8 @@ api = yalies.API(os.environ.get('YALIES_TOKEN') or input('Insert Yalies API toke
 johns = api.people(query='john')
 log(johns)
 
+erik = api.person(filters={'netid': 'ekb33'})
+print(erik.first_name)
 
 import time
 
