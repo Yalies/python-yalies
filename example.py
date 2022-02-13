@@ -33,7 +33,7 @@ log(hopper_2024)
 
 # Get all people at once
 all_people = api.people(filters={'school_code': 'YC'})
-print(f'Found {len(all_people)} people affiliated with Yale.')
+print(f'Found {len(all_people)} people affiliated with Yale College.')
 
 
 # Get people by page with a custom page size
