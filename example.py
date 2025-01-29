@@ -14,28 +14,17 @@ def log(people):
 api = yalies.API(os.environ.get('YALIES_TOKEN') or input('Insert Yalies API token: '))
 
 # Perform a test request to the API
-johns = api.people(query='john')
+johns = api.people(query='john', filters={'school_code': 'YC'})
 log(johns)
 
-erik = api.person(filters={'netid': 'ekb33'})
-print(erik.first_name)
-
-import time
-
 # Perform a more sophisticated request with filters and page
-hopper_2024 = api.people(filters={
+hopper_2027 = api.people(filters={
                                'college': ['Grace Hopper'],
-                               'year': [2024]
+                               'year': [2027]
                            },
                            page=1)
-log(hopper_2024)
-
-
-# Get all people at once
-all_people = api.people(filters={'school_code': 'YC'})
-print(f'Found {len(all_people)} people affiliated with Yale College.')
-
+log(hopper_2027)
 
 # Get people by page with a custom page size
-third_five_people = api.people(page=3, page_size=5)
+third_five_people = api.people(filters={'school_code': 'YC'}, page=2, page_size=5) # page is zero-indexed
 log(third_five_people)

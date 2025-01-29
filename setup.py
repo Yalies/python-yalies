@@ -3,8 +3,8 @@
 from setuptools import setup
 
 setup(name='yalies',
-      version='1.2.0',
-      description='Library for easy interaction with the Yalies API (yalies.io/apidocs)',
+      version='2.0.0',
+      description='Library for easy interaction with the Yalies API (yalies.io/api)',
       url='https://github.com/Yalies/python-yalies',
       author='Erik Boesen',
       author_email='me@erikboesen.com',

@@ -10,8 +10,7 @@ class Person:
 
 
 class API:
-    _HOST = 'https://yalies.io'
-    _API_ROOT = '/api/'
+    _API_BASE_URL = 'https://api.yalies.io/v2/'
 
     def __init__(self, token: str):
         self.token = token
@@ -23,7 +22,7 @@ class API:
         """
         Make a GET request to the API.
         """
-        request = requests.get(self._HOST + self._API_ROOT + endpoint,
+        request = requests.get(self._API_BASE_URL + endpoint,
                                 headers=self.headers)
         if request.ok:
             return request.json()
@@ -34,7 +33,7 @@ class API:
         """
         Make a POST request to the API.
         """
-        request = requests.post(self._HOST + self._API_ROOT + endpoint,
+        request = requests.post(self._API_BASE_URL + endpoint,
                                 json=body,
                                 headers=self.headers)
         if request.ok:
